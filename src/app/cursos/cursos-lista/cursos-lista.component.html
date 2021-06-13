@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Cursos</h4>
+    </div>
+
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['novo']" style="margin-right: 5px;">Novo curso</button>
+      <button type="button" class="btn btn-secondary" (click)="onRefresh()" style="margin-left: 5px;">Atualizar lista</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="cursos$ | async as cursos; else loading"> <!--o pipe async serve para o angular se inscrever e desinscrever no observable cursos$ de forma automática, como eu estou pegando os dados direto do observable/da stream (cursos$), eu posso usar o pipe async. Esse if é para que a tabela só seja mostrada caso haja algum curso cadastrado no banco de dados. Caso não haja nenhum curso no banco de dados ou o banco não tenha sido carregado, ainda, o programa retorna o ng-template que faz o tratamento de erros ou mostra uma mensagem de carregamento, o ng-template é uma tag usada para esses casos onde eu só preciso que ela apareça num caso de else-->
+      <!--thead é a coluna de titulos da tabela-->
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Curso</th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <!--tbody é o corpo da tabela-->
+      <tbody> 
+        <tr *ngFor="let curso of cursos"> <!--o alias "cursos" é para eu não precisar repetir o comando "cursos$ | async" porque se eu fizesse isso, o programa ia se inscrever novamente no observable cursos$ para fazer esse loop "for" o que é desnecessário-->
+          <td>{{ curso.id }}</td>
+          <td>{{ curso.nome }}</td>
+          <td>
+            <span class="float-right">
+              <button class="button btn-outline-warning mb-1 btn-sm" (click)="onEdit(curso.id)">Atualizar</button>
+              {{' '}} <!--isso é só para dar um espaço entre os botões-->
+              <button class="button btn-outline-danger mb-1 btn-sm" (click)="onDelete(curso)">Remover</button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <div *ngIf="error$ | async; else loadingNoError"> <!--o pipe async se inscreve no observable error$ e fica recebendo os dados que ele enviar, no momento em que trocar de tela, o componente cursos-lista será destruido e o observable error$ não será mais necessário, nesse caso, o async faz o unsubscribe automático nele-->
+          Erro ao carregar cursos
+          handle
+      </div>
+      
+      <ng-template #loadingNoError>
+          <span>Carregando Cursos...</span>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>
+
+<!--html que gera a popup de exclusão de curso ao clicar no botão "Remover"-->
+<!--ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover o curso?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+  </div>
+</ng-template-->
