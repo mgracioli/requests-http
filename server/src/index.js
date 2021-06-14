@@ -15,7 +15,7 @@ app.post('/upload', multipartMiddleware, (req, res) => {    //upload é a url qu
     res.json({message: files}); //res é a resposta que será enviada para o servidor. Pode ser uma mensagem de sucesso, ou o propio conteudo que foi feito o upload, como foi feito aqui
 });
 
-//menasgem a ser enviada ao servidor caso dê algum erro
+//mensagem a ser enviada ao servidor caso dê algum erro
 app.use((err, req, res, next) => {
     res.json({error: err.message});
 })
