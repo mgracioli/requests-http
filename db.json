@@ -2,7 +2,7 @@
   "cursos": [
     {
       "id": 1,
-      "nome": "Angular2"
+      "nome": "Angular3"
     },
     {
       "id": 5,
@@ -15,10 +15,6 @@
     {
       "nome": "Python",
       "id": 7
-    },
-    {
-      "nome": "Material 2",
-      "id": 8
     },
     {
       "id": 9,
