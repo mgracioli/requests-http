@@ -15,11 +15,11 @@ app.post('/upload', multipartMiddleware, (req, res) => {    //upload é a url qu
     res.json({message: files}); //res é a resposta que será enviada para o servidor. Pode ser uma mensagem de sucesso, ou o propio conteudo que foi feito o upload, como foi feito aqui
 });
 
-//Para o download de arquivos Excel (localhost:8000/downloadExcel)
+//Endpoint para o download de arquivos Excel (localhost:8000/downloadExcel)
 app.get('/downloadExcel', (req, res) => {
     res.download('./uploads/testeExcel.xlsx');
 });
-//Para o download de arquivos PDF (localhost:8000/downloadPDF)
+//Endpoint para o download de arquivos PDF (localhost:8000/downloadPDF)
 app.get('/downloadPDF', (req, res) => {
     res.download('./uploads/livro.pdf');
 });
