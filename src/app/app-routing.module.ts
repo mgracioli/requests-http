@@ -6,7 +6,7 @@ const routes: Routes = [
     //rota raíz da aplicação
     path: '', 
     pathMatch: 'full', //path: '' é a primeira pagina que vai ser mostrada assim que a página for carregada no browser - pathMatch: full é para que o programa de match na rota vazia; vazio é o prefixo de qualquer rota, então para o programa entender que eu quero a rota raíz (página inicial) do site (rota '/'), tem q colocar o full senão, qualquer rota que eu escolhesse ele poderia redirecionar para qualquer rota; quando o programa detectar o path vazio (' ') (que é o localhost:4200) ele vai redirecionar para a página /upload - isso é para já redirecionar para a página upload automáticamente, para não precisar ficar clicando no item "Upload arquivos" para acessar a página.
-    redirectTo: 'upload'  //tudo isso é para 'transformar' o item Cursos (da navbar) na página "inicial"
+    redirectTo: 'busca-reativa'  //tudo isso é para 'transformar' o item Cursos (da navbar) na página "inicial"
   },
   {
     path: 'cursos',
@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'upload',
     loadChildren: () => import('./upload-file/upload-file.module').then(m => m.UploadFileModule),
+  },
+  {
+    path: 'busca-reativa',
+    loadChildren: () => import('./reactive-search/reactive-search.module').then(m => m.ReactiveSearchModule),
   }
 ];
 
