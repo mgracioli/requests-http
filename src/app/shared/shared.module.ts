@@ -13,11 +13,13 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
   ],
   exports: [
     AlertModalComponent
-  ],
+  ]
+  /*
+  Não precisa mais do entryComponents a partir do Angular 9
   entryComponents: [  //entryComponents é para informar que essa classe vai ser utilizada em tempo de execução (vai ser chamada enquanto o programa estiver rodando - quando clicar em algum botão) e, nao, dentro de um template (usando uma tag, por exemplo)
     AlertModalComponent,
     ConfirmModalComponent
-  ]
+  ]*/
 })
 
 export class SharedModule { }
