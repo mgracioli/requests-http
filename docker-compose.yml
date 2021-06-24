@@ -1,0 +1,6 @@
+services:
+    curso-angular:
+        image: curso-angular
+        build: .
+        ports: 
+            - 8081:80

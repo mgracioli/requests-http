@@ -16,11 +16,7 @@
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
-            "platform": "node",
-            "node": {
-                "package": "${workspaceFolder}/server/package.json",
-                "localRoot": "${workspaceFolder}/server"
-            }
+            "platform": "node"
         }
     ]
 }
